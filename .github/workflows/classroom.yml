@@ -13,6 +13,15 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    - name: Install Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+        sudo systemctl start docker
+        sudo systemctl enable docker
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get install -y docker-compose
     - name: Correct Project Structure
       id: correct-project-structure
       uses: classroom-resources/autograding-command-grader@v1
